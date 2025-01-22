@@ -1,1 +1,4 @@
-﻿
+﻿CREATE TABLE lines (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  )
