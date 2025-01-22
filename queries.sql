@@ -38,3 +38,18 @@ SELECT lines.name, stations.name FROM lines
 INNER JOIN stations ON stations.line_id = lines.id
 WHERE stations.id > 9 AND stations.id < 24
 ORDER BY stations.id DESC
+
+
+
+--Function to add zone to Name
+CREATE OR REPLACE FUNCTION zonez(nam VARCHAR)
+RETURNS VARCHAR AS $$
+DECLARE
+    zone INT; 
+BEGIN
+    SELECT stations.zone INTO zone
+    FROM stations
+    WHERE name = nam;
+    RETURN nam || ' (ZONE ' || zone || ')';
+END;
+$$ LANGUAGE plpgsql;
